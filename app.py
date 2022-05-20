@@ -45,6 +45,7 @@ def load_user(id):
     return User.query.get(int(id))
 
 
+# Маршрут на главную и сохранение данных в бд из формы
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = UserOnIndexForm()
@@ -56,6 +57,7 @@ def index():
     return render_template('index.html', form=form)
 
 
+# Регистрация пользователя
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -67,10 +69,10 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
-        # return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
 
+# Авторизация пользователя
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
