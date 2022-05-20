@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Home Page</title>
+{% endblock %}
+
+{% block content %}
+  {{ super() }}
+  <form method="post" action="">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.name.label }} {{ form.name }}
+    </div>
+    <div class="mb-3">
+      {{ form.surname.label }} {{ form.surname }}
+    </div>
+    <button type="submit" class="btn btn-primary">Push</button>
+  </form>
+  <br>
+  <p>Какой-то тестовый текст</p>
+{% endblock %}
